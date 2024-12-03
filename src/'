@@ -1,0 +1,22 @@
+use std::fs;
+use regex::Regex;
+
+fn parse_input(file_path: &str) -> String {
+    fs::read_to_string(file_path).unwrap()
+}
+
+fn solve_part1(contents: String) -> i64 {
+    let re = Regex::new(r"mul\(\d{1,3},\d{1,3}\)").unwrap();
+    let matches = re.find_iter(contents.as_str()).map(|m| m.as_str()).collect::<Vec<&str>>();
+
+    for m in matches {
+        println!("{}", m);
+    }
+
+    return 1;
+}
+
+fn main() {
+    let contents = parse_input("./inputs/day3.txt");
+    solve_part1(contents)
+}

@@ -4,18 +4,16 @@ use std::io::{BufRead, BufReader};
 fn parse_input(file_path: &str) -> Vec<Vec<i32>> {
     let file = File::open(file_path).unwrap();
     let buf = BufReader::new(file);
-    let levels: Vec<Vec<i32>> = buf
+    buf
         .lines()
         .map(|line| {
-            let level: Vec<i32> = line
+            line
                 .unwrap()
                 .split_whitespace()
                 .map(|report| report.parse().unwrap())
-                .collect();
-            return level;
+                .collect()
         })
-        .collect();
-    return levels;
+        .collect()
 }
 
 fn is_level_safe(level: &Vec<i32>) -> bool {
